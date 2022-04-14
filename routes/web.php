@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AdvertisementDetailController;
+use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\AdvertisementSizeController;
 use App\Http\Controllers\InstitutionController;
 use App\Http\Controllers\NewspaperController;
@@ -29,11 +29,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     })->name('dashboard');
     Route::resource('user', UserController::class);
     Route::resource('institution', InstitutionController::class);
-    Route::resource('advertisement', AdvertisementDetailController::class);
+    Route::resource('advertisement', AdvertisementController::class);
     Route::resource('advertisement-size', AdvertisementSizeController::class);
     Route::resource('newspaper', NewspaperController::class);
     Route::resource('supplement', SupplementController::class);
-
 });
 Route::get('logout', [UserController::class, 'logout'])->name('logout');
 

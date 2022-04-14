@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AdvertisementDetail;
+use App\Models\Advertisement;
 use App\Models\AdvertisementSize;
 use App\Models\Institution;
 use App\Models\Newspaper;
 use Illuminate\Http\Request;
 
-class AdvertisementDetailController extends Controller
+class AdvertisementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class AdvertisementDetailController extends Controller
      */
     public function index()
     {
-        $ads = AdvertisementDetail::all();
-
+        $ads = Advertisement::all();
+        // dd($ads[0]->newspapers);
         return view('advertisement.index', compact('ads'));
     }
 
@@ -44,7 +44,13 @@ class AdvertisementDetailController extends Controller
      */
     public function store(Request $request)
     {
-        AdvertisementDetail::create($request->all());
+        $fileName = time() . '.' . $request->ad_file->extension();
+
+        $data = $request->all();
+        $data['ad_file'] = $fileName;
+        Advertisement::create($data);
+
+        $request->ad_file->move(public_path('files'), $fileName);
 
         toastr()->success('Advertisement Added Successfully.');
         return redirect()->route('advertisement.index');
@@ -53,10 +59,10 @@ class AdvertisementDetailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\AdvertisementDetail  $advertisementDetail
+     * @param  \App\Models\Advertisement  $Advertisement
      * @return \Illuminate\Http\Response
      */
-    public function show(AdvertisementDetail $advertisementDetail)
+    public function show(Advertisement $Advertisement)
     {
         //
     }
@@ -64,10 +70,10 @@ class AdvertisementDetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\AdvertisementDetail  $advertisementDetail
+     * @param  \App\Models\Advertisement  $Advertisement
      * @return \Illuminate\Http\Response
      */
-    public function edit(AdvertisementDetail $advertisementDetail)
+    public function edit(Advertisement $Advertisement)
     {
         //
     }
@@ -76,10 +82,10 @@ class AdvertisementDetailController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AdvertisementDetail  $advertisementDetail
+     * @param  \App\Models\Advertisement  $Advertisement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AdvertisementDetail $advertisementDetail)
+    public function update(Request $request, Advertisement $Advertisement)
     {
         //
     }
@@ -87,10 +93,10 @@ class AdvertisementDetailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\AdvertisementDetail  $advertisementDetail
+     * @param  \App\Models\Advertisement  $Advertisement
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AdvertisementDetail $advertisementDetail)
+    public function destroy(Advertisement $Advertisement)
     {
         //
     }

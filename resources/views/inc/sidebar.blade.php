@@ -23,40 +23,52 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-                
-                <li class="sidebar-item  {{ (request()->is('institution')) ? 'active' : '' }}">
-                    <a href="/institution" class='sidebar-link'>
-                    <i class="fa-solid fa-house-chimney"></i>
-                        <span>Institution</span>
-                    </a>
-                </li>
-                
-                <li class="sidebar-item  {{ (request()->is('user')) ? 'active' : '' }}">
-                    <a href="/user" class='sidebar-link'>
-                    <i class="fa-solid fa-user-group"></i>
-                        <span>Users</span>
-                    </a>
-                </li>
-                
-                <li class="sidebar-item has-sub {{ (request()->is('advertisement')) ? 'active' : '' }}">
+
+                <li class="sidebar-item has-sub {{ (request()->is('advertisement*')) ? 'active' : '' }}">
                     <a href="/advertisement" class='sidebar-link'>
                         <i class="fa-solid fa-file-video"></i>
                         <span>Advertisement</span>
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="/advertisement">All</a>
+                            <a href="/advertisement">All Ads</a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="/advertisement/create">Add New</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="/advertisement-size">Ad Size</a>
                         </li>
                     </ul>
                 </li>
-                
-                <li class="sidebar-item  {{ (request()->is('newspaper')) ? 'active' : '' }}">
+
+                <li class="sidebar-item has-sub {{ (request()->is('newspaper*')) ? 'active' : '' }}">
                     <a href="/newspaper" class='sidebar-link'>
-                    <i class="fa-solid fa-user-group"></i>
+                        <i class="fa-solid fa-user-group"></i>
                         <span>Newspaper</span>
+                    </a>
+                    <ul class="submenu ">
+                        <li class="submenu-item ">
+                            <a href="/newspaper">All Newspapers</a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="/newspaper/create">Add New</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item  {{ (request()->is('institution')) ? 'active' : '' }}">
+                    <a href="/institution" class='sidebar-link'>
+                        <i class="fa-solid fa-house-chimney"></i>
+                        <span>Institution</span>
+                    </a>
+                </li>
+
+
+                <li class="sidebar-item  {{ (request()->is('user')) ? 'active' : '' }}">
+                    <a href="/user" class='sidebar-link'>
+                        <i class="fa-solid fa-user-group"></i>
+                        <span>Users</span>
                     </a>
                 </li>
 

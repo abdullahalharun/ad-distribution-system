@@ -1,5 +1,5 @@
 <x-app-layout>
-<div class="page-heading">
+    <div class="page-heading">
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
@@ -23,31 +23,35 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">New Advertisement Form</h4>
+                            <h4 class="card-title">New Advertisement </h4>
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form action="{{ route('advertisement.store') }}" method="POST" class="form">
+                                <form action="{{ route('advertisement.store') }}" method="POST" class="form" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="first-name-column">Advertisement Name</label>
-                                                <input type="text" id="first-name-column" class="form-control"
-                                                    placeholder="" name="advertisementName">
+                                        <div class="col-md-12 col-12">
+                                            <div class="form-group mb-3">
+                                                <label class="noto-sans" for="formFile" class="form-label">বিজ্ঞাপন নির্বাচন</label>
+                                                <input class="form-control" type="file" name="ad_file" id="formFile">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="email-id-column">Advertisement Data</label>
-                                                <input type="text" id="email-id-column" class="form-control"
-                                                    name="advertisementData" placeholder="">
+                                                <label class="noto-sans" for="first-name-column">বিজ্ঞাপনের নাম</label>
+                                                <input type="text" id="first-name-column" class="form-control" placeholder="" name="ad_name">
                                             </div>
                                         </div>
+                                        <!-- <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="noto-sans" for="email-id-column">Advertisement Data</label>
+                                                <input type="text" id="email-id-column" class="form-control" name="advertisementData" placeholder="">
+                                            </div>
+                                        </div> -->
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="city-column">Institution</label>
-                                                <select class="choices form-select" name="institution_id" id="adrevetisement_size">
+                                                <label class="noto-sans" for="institution">প্রতিষ্ঠান</label>
+                                                <select class="choices form-select" name="institution_id" id="institution">
                                                     <option value="">Select Institution</option>
                                                     @foreach($institutions as $institution)
                                                     <option value="{{$institution->id}}">{{$institution->ministry}}</option>
@@ -57,34 +61,55 @@
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="advertisement_size">Advertisement Size</label>
-                                                <select class="choices form-select" name="advertisement_size_id" id="advertisement_size">
-                                                    <option value="">Select Ad Size</option>
-                                                    @foreach($adsizes as $adsize)
-                                                    <option value="{{$adsize->column.'*'.$adsize->inch}}">{{$adsize->column.'*'.$adsize->inch}}</option>
-                                                    @endforeach                                                    
+                                                <label class="noto-sans" for="city-column">বিজ্ঞাপনের ধরণ</label>
+                                                <select class="choices form-select" name="ad_type" id="adrevetisement_size">
+                                                    <option value="">Select Ad Type</option>
+                                                    <option value="acp">ACP</option>
+                                                    <option value="tenda">Tenda</option>
+                                                    <option value="legalNotice">Legal Notice</option>
+                                                    <option value="supplementary">Supplementary</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="newspaper_id">Newspaper</label>
-                                                <select class="choices form-select" name="newspaper_id" id="newspaper_id">
-                                                    <option value="">Select Newspaper</option>
-                                                    @foreach($newspapers as $newspaper)
-                                                    <option value="{{$newspaper->id}}">{{$newspaper->newspaperName}}</option>
-                                                    @endforeach                                                    
+                                                <label class="noto-sans" for="city-column">প্রত্রিকার সংখ্যা</label>
+                                                <select class="choices form-select" name="newspaper_number" id="adrevetisement_size">
+                                                    <option value="2" selected>2</option>
+                                                    <option value="4">4</option>
+                                                    <option value="6">6</option>
+                                                    <option value="8">8</option>
+                                                    <option value="10">10</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        
-                                        
+
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="noto-sans" for="newspaper_id">পত্রিকা নির্বাচন</label>
+                                                <select class="choices form-select multiple-remove" multiple="multiple" name="newspapers[]" id="newspaper_id">
+                                                    @foreach($newspapers as $newspaper)
+                                                    <option value="{{$newspaper->id}}">{{$newspaper->newspaperName}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="noto-sans" for="advertisement_size">বিজ্ঞাপনের সাইজ</label>
+                                                <select class="choices form-select" name="ad_size_id" id="advertisement_size">
+                                                    <option value="">Select Ad Size</option>
+                                                    @foreach($adsizes as $adsize)
+                                                    <option value="{{$adsize->id}}">{{$adsize->column.'*'.$adsize->inch.' (Column * Inch)'}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
                                         <div class="col-12 d-flex justify-content-end">
-                                            <button type="submit"
-                                                class="btn btn-primary me-1 mb-1">Create</button>
-                                            <button type="reset"
-                                                class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                            <button type="submit" class="btn btn-primary me-1 mb-1">Create</button>
+                                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                         </div>
                                     </div>
                                 </form>
@@ -97,27 +122,30 @@
         <!-- // Basic multiple Column Form section end -->
     </div>
 
-@section('extra-js')
-<script>
-    window.onload = function() {
-        districts();
-    }
-    
-    const districts = async () => 
-    {
-        const {data} = await axios.get('https://bdapis.herokuapp.com/api/v1.1/districts');
+    @section('extra-js')
+    <script>
+        window.onload = function() {
+            districts();
+        }
+
+        const districts = async () => {
+            const {
+                data
+            } = await axios.get('https://bdapis.herokuapp.com/api/v1.1/districts');
             // .then(res => console.log(res.data))
             // .catch(err => console.log(err));   
-        const dist = data.data;
-        // console.log(dist)
-        var options = "";
-        for (const key of Object.keys(dist)) {
-            options += '<option value='+ dist[key]._id +'>' + dist[key].district + '</option>';
+            const dist = data.data;
+            // console.log(dist)
+            var options = "";
+            for (const key of Object.keys(dist)) {
+                options += '<option value=' + dist[key]._id + '>' + dist[key].district + '</option>';
+            }
+            document.getElementById("district").innerHTML = options;
         }
-        document.getElementById("district").innerHTML= options;         
-    }
+    </script>
 
-    
-</script>
-@endsection
+    <!-- Include Choices JavaScript -->
+    <script src="/assets/vendors/choices.js/choices.min.js"></script>
+
+    @endsection
 </x-app-layout>
