@@ -17,7 +17,6 @@ class CreateNewspapersTable extends Migration
             $table->id();
             $table->string('newspaperName');
             $table->decimal('newspaperRate', 19, 2);
-            $table->integer('supplement_id');
             $table->timestamps();
         });
     }

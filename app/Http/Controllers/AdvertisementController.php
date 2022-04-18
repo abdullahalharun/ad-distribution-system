@@ -45,9 +45,19 @@ class AdvertisementController extends Controller
     public function store(Request $request)
     {
         $fileName = time() . '.' . $request->ad_file->extension();
+        $ad_size = AdvertisementSize::find($request->ad_size_id);
+        $ad_price = 0;
+        foreach ($request->newspapers as $n_id) {
+            $n = Newspaper::find($n_id);
+            $ad_price += $n->newspaperRate * $ad_size->column * $ad_size->inch;
+        }
+
+        // dd($ad_price);
 
         $data = $request->all();
         $data['ad_file'] = $fileName;
+        $data['ad_price'] = $ad_price;
+
         Advertisement::create($data);
 
         $request->ad_file->move(public_path('files'), $fileName);

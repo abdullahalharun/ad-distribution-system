@@ -22,6 +22,7 @@ class CreateAdvertisementsTable extends Migration
             $table->integer('newspaper_number');
             $table->integer('ad_size_id');
             $table->text('newspapers');
+            $table->double('ad_price');
             $table->timestamps();
         });
     }

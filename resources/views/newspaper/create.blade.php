@@ -1,5 +1,5 @@
 <x-app-layout>
-<div class="page-heading">
+    <div class="page-heading">
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
@@ -33,33 +33,27 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label for="first-name-column">Newspaper Name</label>
-                                                <input type="text" id="first-name-column" class="form-control"
-                                                    placeholder="" name="newspaperName">
+                                                <input type="text" id="first-name-column" class="form-control" placeholder="" name="newspaperName">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label for="email-id-column">Rate</label>
-                                                <input type="text" id="email-id-column" class="form-control"
-                                                    name="newspaperRate" placeholder="">
+                                                <input type="text" id="email-id-column" class="form-control" name="newspaperRate" placeholder="">
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-12">
+                                        <!-- <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label for="supplement">Supplement</label>
                                                 <select class="choices form-select" name="supplement_id" id="supplement">
-                                                    <option value="">Select Supplement</option>
                                                     <option value="1">Supplement</option>
-                                                    
                                                 </select>
                                             </div>
-                                        </div>                                    
-                                        
+                                        </div> -->
+
                                         <div class="col-12 d-flex justify-content-end">
-                                            <button type="submit"
-                                                class="btn btn-primary me-1 mb-1">Create</button>
-                                            <button type="reset"
-                                                class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                            <button type="submit" class="btn btn-primary me-1 mb-1">Create</button>
+                                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                         </div>
                                     </div>
                                 </form>
@@ -72,27 +66,26 @@
         <!-- // Basic multiple Column Form section end -->
     </div>
 
-@section('extra-js')
-<script>
-    window.onload = function() {
-        districts();
-    }
-    
-    const districts = async () => 
-    {
-        const {data} = await axios.get('https://bdapis.herokuapp.com/api/v1.1/districts');
+    @section('extra-js')
+    <script>
+        window.onload = function() {
+            districts();
+        }
+
+        const districts = async () => {
+            const {
+                data
+            } = await axios.get('https://bdapis.herokuapp.com/api/v1.1/districts');
             // .then(res => console.log(res.data))
             // .catch(err => console.log(err));   
-        const dist = data.data;
-        // console.log(dist)
-        var options = "";
-        for (const key of Object.keys(dist)) {
-            options += '<option value='+ dist[key]._id +'>' + dist[key].district + '</option>';
+            const dist = data.data;
+            // console.log(dist)
+            var options = "";
+            for (const key of Object.keys(dist)) {
+                options += '<option value=' + dist[key]._id + '>' + dist[key].district + '</option>';
+            }
+            document.getElementById("district").innerHTML = options;
         }
-        document.getElementById("district").innerHTML= options;         
-    }
-
-    
-</script>
-@endsection
+    </script>
+    @endsection
 </x-app-layout>

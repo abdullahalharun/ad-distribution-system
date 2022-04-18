@@ -17,6 +17,7 @@ class Advertisement extends Model
         'newspaper_number',
         'ad_size_id',
         'newspapers',
+        'ad_price'
     ];
 
     // public function newspaper_name()
