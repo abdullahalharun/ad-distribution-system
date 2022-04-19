@@ -50,7 +50,7 @@
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="country-floating">Administrative Department</label>
+                                                <label for="country-floating">Administrative Division</label>
                                                 <input type="text" id="country-floating" class="form-control" name="administrativeDepartment" placeholder="">
                                             </div>
                                         </div>
