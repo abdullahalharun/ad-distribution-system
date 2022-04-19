@@ -59,15 +59,32 @@
                                                 </select>
                                             </div>
                                         </div>
+
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="noto-sans" for="advertisement_size">বিজ্ঞাপনের সাইজ</label>
+                                                <select class="choices form-select" name="ad_size_id" id="advertisement_size">
+                                                    <option value="">Select Ad Size</option>
+                                                    @foreach($adsizes as $adsize)
+                                                    <option value="{{$adsize->id}}">{{$adsize->column.'x'.$adsize->inch.' Column - Inch'}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label class="noto-sans" for="city-column">বিজ্ঞাপনের ধরণ</label>
                                                 <select class="choices form-select" name="ad_type" id="adrevetisement_size">
                                                     <option value="">Select Ad Type</option>
-                                                    <option value="acp">ACP</option>
-                                                    <option value="tenda">Tenda</option>
-                                                    <option value="legalNotice">Legal Notice</option>
-                                                    <option value="supplementary">Supplementary</option>
+                                                    <option value="eGP">eGP</option>
+                                                    <option value="tender">Tender</option>
+                                                    <option value="legalNotice">Notice</option>
+                                                    <option value="notice">Legal Notice</option>
+                                                    <option value="appointmentNotice">Appointment Notice</option>
+                                                    <option value="auctionNotice">Auction Notice</option>
+                                                    <option value="leaseNotice">Lease Notice</option>
+                                                    <option value="supplement">Supplement</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -80,6 +97,7 @@
                                                     <option value="6">6</option>
                                                     <option value="8">8</option>
                                                     <option value="10">10</option>
+                                                    <option value="1000">Unlimited</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -90,18 +108,6 @@
                                                 <select class="choices form-select multiple-remove" multiple="multiple" name="newspapers[]" id="newspaper_id">
                                                     @foreach($newspapers as $newspaper)
                                                     <option value="{{$newspaper->id}}">{{$newspaper->newspaperName}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label class="noto-sans" for="advertisement_size">বিজ্ঞাপনের সাইজ</label>
-                                                <select class="choices form-select" name="ad_size_id" id="advertisement_size">
-                                                    <option value="">Select Ad Size</option>
-                                                    @foreach($adsizes as $adsize)
-                                                    <option value="{{$adsize->id}}">{{$adsize->column.'*'.$adsize->inch.' (Column * Inch)'}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

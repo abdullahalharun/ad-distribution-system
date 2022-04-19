@@ -15,6 +15,7 @@ class CreateNewspapersTable extends Migration
     {
         Schema::create('newspapers', function (Blueprint $table) {
             $table->id();
+            $table->string('newspaperType');
             $table->string('newspaperName');
             $table->decimal('newspaperRate', 19, 2);
             $table->timestamps();

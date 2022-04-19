@@ -1,5 +1,5 @@
 <x-app-layout>
-<div class="page-heading">
+    <div class="page-heading">
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
@@ -32,30 +32,26 @@
                                     <div class="row">
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="first-name-column">Ministry</label>
-                                                <input type="text" id="first-name-column" class="form-control"
-                                                    placeholder="" name="ministry">
+                                                <label for="first-name-column">Ministry / Division</label>
+                                                <input type="text" id="first-name-column" class="form-control" placeholder="" name="ministry">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="email-id-column">Department Or Directorate</label>
-                                                <input type="text" id="email-id-column" class="form-control"
-                                                    name="departmentOrDirectorate" placeholder="">
+                                                <label for="email-id-column">Department / Directorate</label>
+                                                <input type="text" id="email-id-column" class="form-control" name="departmentOrDirectorate" placeholder="">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label for="city-column">Office</label>
-                                                <input type="text" id="city-column" class="form-control"
-                                                    placeholder="" name="office">
+                                                <input type="text" id="city-column" class="form-control" placeholder="" name="office">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label for="country-floating">Administrative Department</label>
-                                                <input type="text" id="country-floating" class="form-control"
-                                                    name="administrativeDepartment" placeholder="">
+                                                <input type="text" id="country-floating" class="form-control" name="administrativeDepartment" placeholder="">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
@@ -64,38 +60,33 @@
                                                 <!-- <input type="text" id="district" class="form-control"
                                                     name="district" placeholder=""> -->
                                                 <select class="choices form-select" name="district" id="district">
-                                                    <!-- <option value="">Select District</option> -->
-                                                    
+                                                    <option value="">Select District</option>
+
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="email-id-column">District Level Office</label>
-                                                <input type="text" id="districtLevelOffice-id-column" class="form-control"
-                                                    name="districtLevelOffice" placeholder="">
+                                                <label for="email-id-column">Name of District Office</label>
+                                                <input type="text" id="districtLevelOffice-id-column" class="form-control" name="districtLevelOffice" placeholder="">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label for="company-column">Upazila</label>
-                                                <input type="text" id="Upazila-column" class="form-control"
-                                                    name="upazila" placeholder="">
+                                                <input type="text" id="Upazila-column" class="form-control" name="upazila" placeholder="">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="email-id-column">Upazilla Level Office</label>
-                                                <input type="text" id="UpazilaLevelOffice-id-column" class="form-control"
-                                                    name="upazilaLevelOffice" placeholder="">
+                                                <label for="email-id-column">Name of Upazila Office</label>
+                                                <input type="text" id="UpazilaLevelOffice-id-column" class="form-control" name="upazilaLevelOffice" placeholder="">
                                             </div>
                                         </div>
-                                        
+
                                         <div class="col-12 d-flex justify-content-end">
-                                            <button type="submit"
-                                                class="btn btn-primary me-1 mb-1">Create</button>
-                                            <button type="reset"
-                                                class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                            <button type="submit" class="btn btn-primary me-1 mb-1">Create</button>
+                                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                         </div>
                                     </div>
                                 </form>
@@ -108,27 +99,27 @@
         <!-- // Basic multiple Column Form section end -->
     </div>
 
-@section('extra-js')
-<script>
-    window.onload = function() {
-        districts();
-    }
-    
-    const districts = async () => 
-    {
-        const {data} = await axios.get('https://bdapis.herokuapp.com/api/v1.1/districts');
+    @section('extra-js')
+    <script>
+        window.onload = function() {
+            districts();
+        }
+
+        const districts = async () => {
+            const {
+                data
+            } = await axios.get('https://bdapis.herokuapp.com/api/v1.1/districts');
             // .then(res => console.log(res.data))
             // .catch(err => console.log(err));   
-        const dist = data.data;
-        // console.log(dist)
-        var options = "";
-        for (const key of Object.keys(dist)) {
-            options += '<option value='+ dist[key]._id +'>' + dist[key].district + '</option>';
+            const dist = data.data;
+            // console.log(dist)
+            var options = "";
+            for (const key of Object.keys(dist)) {
+                options += '<option value=' + dist[key]._id + '>' + dist[key].district + '</option>';
+            }
+            document.getElementById("district").innerHTML = options;
         }
-        document.getElementById("district").innerHTML= options;         
-    }
+    </script>
 
-    
-</script>
-@endsection
+    @endsection
 </x-app-layout>

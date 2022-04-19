@@ -32,24 +32,27 @@
                                     <div class="row">
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
+                                                <label for="newspaper_type">Newspaper Type</label>
+                                                <select class="choices form-select" name="newspaperType" id="newspaper_type">
+                                                    <option value="">Select Newspaper Type</option>
+                                                    <option value="Bangla">Bangla</option>
+                                                    <option value="English">English</option>
+                                                    <option value="Local">Local</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
                                                 <label for="first-name-column">Newspaper Name</label>
                                                 <input type="text" id="first-name-column" class="form-control" placeholder="" name="newspaperName">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="email-id-column">Rate</label>
+                                                <label for="email-id-column">Rate (per column - per inch)</label>
                                                 <input type="text" id="email-id-column" class="form-control" name="newspaperRate" placeholder="">
                                             </div>
                                         </div>
-                                        <!-- <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="supplement">Supplement</label>
-                                                <select class="choices form-select" name="supplement_id" id="supplement">
-                                                    <option value="1">Supplement</option>
-                                                </select>
-                                            </div>
-                                        </div> -->
 
                                         <div class="col-12 d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary me-1 mb-1">Create</button>
@@ -87,5 +90,8 @@
             document.getElementById("district").innerHTML = options;
         }
     </script>
+    <!-- Include Choices JavaScript -->
+    <script src="/assets/vendors/choices.js/choices.min.js"></script>
+
     @endsection
 </x-app-layout>

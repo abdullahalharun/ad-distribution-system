@@ -1,67 +1,67 @@
 <x-app-layout>
     <div class="page-heading">
-                <div class="page-title">
-                    <div class="row">
-                        <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>DataTable</h3>
-                            <p class="text-subtitle text-muted">For Institution to check they list</p>
-                        </div>
-                        <div class="col-12 col-md-6 order-md-2 order-first">
-                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">DataTable</li>
-                                </ol>
-                            </nav>
-                        </div>
+        <div class="page-title">
+            <div class="row">
+                <div class="col-12 col-md-6 order-md-1 order-last">
+                    <h3>DataTable</h3>
+                    <p class="text-subtitle text-muted">For Institution to check they list</p>
+                </div>
+                <div class="col-12 col-md-6 order-md-2 order-first">
+                    <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">DataTable</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <section class="section">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between">
+                        <span>All Institutions</span>
+                        <a class="btn btn-primary" href="/institution/create">Add New</a>
                     </div>
                 </div>
-                <section class="section">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="d-flex justify-content-between">
-                                <span>All Institutions</span>
-                                <a class="btn btn-primary" href="/institution/create">Add New</a>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <table class="table table-striped" id="table1">
-                                <thead>
-                                    <tr>
-                                        <th>Ministry</th>
-                                        <th>Department</th>
-                                        <th>Office</th>
-                                        <th>Administrative Department</th>
-                                        <th>District</th>
-                                        <th>District Level Office</th>
-                                        <th>Upazila</th>
-                                        <th>Upazila Level Office</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($institutions as $institution)
-                                    <tr>
-                                        <td>{{$institution->ministry}}</td>
-                                        <td>{{$institution->departmentOrDirectorate}}</td>
-                                        <td>{{$institution->office}}</td>
-                                        <td>{{$institution->administrativeDepartment}}</td>
-                                        <td>{{$institution->district}}</td>
-                                        <td>{{$institution->districtLevelOffice}}</td>
-                                        <td>{{$institution->upazila}}</td>
-                                        <td>{{$institution->upazilaLevelOffice}}</td>
-                                        
-                                        <td class="d-flex justify-content-center">
-                                            <a href="/institution/{{$institution->id}}/edit">
-                                                <i class="fa-solid fa-pen-to-square px-2"></i>
-                                            </a>
-                                            <a href="/institution/{{$institution->id}}/delete">
-                                                <i class="fa-solid fa-trash-can text-danger"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                    <!-- <tr>
+                <div class="card-body">
+                    <table class="table table-striped" id="table1">
+                        <thead>
+                            <tr>
+                                <th>Ministry / Division</th>
+                                <th>Department / Directorate</th>
+                                <th>Office</th>
+                                <th>Administrative Department</th>
+                                <th>District</th>
+                                <th>Name of District Office</th>
+                                <th>Upazila</th>
+                                <th>Name of Upazila Office</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($institutions as $institution)
+                            <tr>
+                                <td>{{$institution->ministry}}</td>
+                                <td>{{$institution->departmentOrDirectorate}}</td>
+                                <td>{{$institution->office}}</td>
+                                <td>{{$institution->administrativeDepartment}}</td>
+                                <td>{{$institution->district}}</td>
+                                <td>{{$institution->districtLevelOffice}}</td>
+                                <td>{{$institution->upazila}}</td>
+                                <td>{{$institution->upazilaLevelOffice}}</td>
+
+                                <td class="d-flex justify-content-center">
+                                    <a href="/institution/{{$institution->id}}/edit">
+                                        <i class="fa-solid fa-pen-to-square px-2"></i>
+                                    </a>
+                                    <a href="/institution/{{$institution->id}}/delete">
+                                        <i class="fa-solid fa-trash-can text-danger"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+                            <!-- <tr>
                                         <td>Dale</td>
                                         <td>fringilla.euismod.enim@quam.ca</td>
                                         <td>0500 527693</td>
@@ -286,20 +286,20 @@
                                             <span class="badge bg-success">Active</span>
                                         </td>
                                     </tr> -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                </section>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-    
+
+        </section>
+    </div>
+
     @section('extra-js')
     <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
-            <script>
-                // Simple Datatable
-                let table1 = document.querySelector('#table1');
-                let dataTable = new simpleDatatables.DataTable(table1);
-            </script>
+    <script>
+        // Simple Datatable
+        let table1 = document.querySelector('#table1');
+        let dataTable = new simpleDatatables.DataTable(table1);
+    </script>
     @endsection
 </x-app-layout>
