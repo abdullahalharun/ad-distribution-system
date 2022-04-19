@@ -31,7 +31,7 @@
                                 <th>Ministry / Division</th>
                                 <th>Department / Directorate</th>
                                 <th>Office</th>
-                                <th>Administrative Department</th>
+                                <th>Administrative Division</th>
                                 <th>District</th>
                                 <th>Name of District Office</th>
                                 <th>Upazila</th>
