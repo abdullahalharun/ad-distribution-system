@@ -16,6 +16,66 @@
                 </div>
             </div>
         </div>
+
+        <!-- Basic choices start -->
+        <section class="basic-choices">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <!-- <div class="card-header">
+                            <h4 class="card-title">Report</h4>
+                        </div> -->
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <h6>Report by Ad Type</h6>
+                                        <!-- <p>Use <code>.choices</code> class for basic choices control.</p> -->
+                                        <div class="form-group">
+                                            <select class="choices form-select">
+                                                <option value="">Select Ad Type</option>
+                                                <option value="eGP">eGP</option>
+                                                <option value="tender">Tender</option>
+                                                <option value="legalNotice">Notice</option>
+                                                <option value="notice">Legal Notice</option>
+                                                <option value="appointmentNotice">Appointment Notice</option>
+                                                <option value="auctionNotice">Auction Notice</option>
+                                                <option value="leaseNotice">Lease Notice</option>
+                                                <option value="supplement">Supplement</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-md-6 mb-4">
+                                        <h6>Single Select with Label</h6>
+                                        <p>Use <code>optgroup</code> attribute for basic choices with Label
+                                            control.</p>
+                                        <div class="form-group">
+                                            <select class="choices form-select">
+                                                <optgroup label="Figures">
+                                                    <option value="romboid">Romboid</option>
+                                                    <option value="trapeze">Trapeze</option>
+                                                    <option value="triangle">Triangle</option>
+                                                    <option value="polygon">Polygon</option>
+                                                </optgroup>
+                                                <optgroup label="Colors">
+                                                    <option value="red">Red</option>
+                                                    <option value="green">Green</option>
+                                                    <option value="blue">Blue</option>
+                                                    <option value="purple">Purple</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </div> -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Basic choices end -->
+
         <section class="section">
             <div class="card">
                 <div class="card-header">
@@ -77,5 +137,8 @@
         let table1 = document.querySelector('#table1');
         let dataTable = new simpleDatatables.DataTable(table1);
     </script>
+    <!-- Include Choices JavaScript -->
+    <script src="/assets/vendors/choices.js/choices.min.js"></script>
+
     @endsection
 </x-app-layout>
