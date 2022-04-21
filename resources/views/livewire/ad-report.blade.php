@@ -44,11 +44,10 @@
                                 </div>
 
                                 <div class="col-md-4 mb-4">
-                                    <h6>Order By</h6>
+                                    <h6>Order By Name</h6>
                                     <!-- <p>Use <code>.choices</code> class for basic choices control.</p> -->
                                     <div class="form-group">
                                         <select wire:model="sortBy" class="form-select">
-                                            <option value="">Order By</option>
                                             <option value="asc">ASC</option>
                                             <option value="desc">DESC</option>
                                         </select>
