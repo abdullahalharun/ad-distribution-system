@@ -40,6 +40,15 @@ class Advertisement extends Model
      */
     public function getNewspapersAttribute($value)
     {
-        return $this->attributes['newspapers'] = json_decode($value);
+        return $this->attributes['newspapers[]'] = json_decode($value);
+    }
+
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('ad_name', 'like', $term)
+                ->orWhere('ad_type', 'like', $term);
+        });
     }
 }

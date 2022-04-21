@@ -17,9 +17,9 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
-        $ads = Advertisement::all();
+        // $ads = Advertisement::all();
         // dd($ads[0]->newspapers);
-        return view('advertisement.index', compact('ads'));
+        return view('advertisement.index');
     }
 
     /**
