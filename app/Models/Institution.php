@@ -13,6 +13,7 @@ class Institution extends Model
         'ministry',
         'departmentOrDirectorate',
         'office',
+        'regionalOffice',
         'administrativeDepartment',
         'district',
         'districtLevelOffice',

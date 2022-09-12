@@ -18,6 +18,7 @@ class CreateInstitutionsTable extends Migration
             $table->string('ministry');
             $table->string('departmentOrDirectorate');
             $table->string('office');
+            $table->string('regionalOffice');
             $table->string('administrativeDepartment');
             $table->string('district');
             $table->string('districtLevelOffice');

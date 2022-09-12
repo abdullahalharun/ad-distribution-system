@@ -44,8 +44,14 @@
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="city-column">Office</label>
+                                                <label for="city-column">Administrative Office</label>
                                                 <input type="text" id="city-column" class="form-control" placeholder="" name="office">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="city-column">Regional Office</label>
+                                                <input type="text" id="city-column" class="form-control" placeholder="" name="regionalOffice">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
