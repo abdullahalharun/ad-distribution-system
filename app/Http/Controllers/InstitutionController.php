@@ -87,9 +87,21 @@ class InstitutionController extends Controller
      * @param  \App\Models\Institution  $institution
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Institution $institution)
+    public function destroy($id)
     {
-        //
+        $institution = Institution::find($id);
+        $institution->delete();
+        $institution->save();
+
+        return redirect()->back()->withSuccess('Institution deleted successfully.');
+    }
+
+    public function delete($id)
+    {
+        $institution = Institution::find($id);
+        $institution->delete();
+
+        return redirect()->back()->withSuccess('Institution deleted successfully.');
     }
 
     public function districts()

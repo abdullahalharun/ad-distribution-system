@@ -85,7 +85,11 @@ class AdvertisementController extends Controller
      */
     public function edit(Advertisement $Advertisement)
     {
-        //
+        $institutions = Institution::all();
+        $adsizes = AdvertisementSize::all();
+        $newspapers = Newspaper::all();
+
+        return view('advertisement.edit', compact('institutions', 'adsizes', 'newspapers', 'Advertisement'));
     }
 
     /**
@@ -97,7 +101,26 @@ class AdvertisementController extends Controller
      */
     public function update(Request $request, Advertisement $Advertisement)
     {
-        //
+        $fileName = time() . '.' . $request->ad_file->extension();
+        $ad_size = AdvertisementSize::find($request->ad_size_id);
+        $ad_price = 0;
+        foreach ($request->newspapers as $n_id) {
+            $n = Newspaper::find($n_id);
+            $ad_price += $n->newspaperRate * $ad_size->column * $ad_size->inch;
+        }
+
+        // dd($ad_price);
+
+        $data = $request->all();
+        $data['ad_file'] = $fileName;
+        $data['ad_price'] = $ad_price;
+
+        $Advertisement->update($data);
+
+        $request->ad_file->move(public_path('files'), $fileName);
+
+        toastr()->success('Advertisement updated Successfully.');
+        return redirect()->route('advertisement.index');
     }
 
     /**
@@ -109,5 +132,13 @@ class AdvertisementController extends Controller
     public function destroy(Advertisement $Advertisement)
     {
         //
+    }
+
+    public function delete($id)
+    {
+        $ad = Advertisement::find($id);
+        $ad->delete();
+
+        return redirect()->back()->withSuccess('Advertisement deleted successfully.');
     }
 }

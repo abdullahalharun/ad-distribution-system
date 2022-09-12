@@ -10,7 +10,7 @@
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Add New Institution</li>
+                            <li class="breadcrumb-item active" aria-current="page">Add New Advertisement</li>
                         </ol>
                     </nav>
                 </div>

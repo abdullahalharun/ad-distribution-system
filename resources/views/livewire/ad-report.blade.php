@@ -70,7 +70,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify-content-between">
-                    <span>All advertisements</span>
+                    <span>All advertisements ({{ $ads->count() }})</span>
                     <a class="btn btn-primary" href="/advertisement/create">Add New</a>
                 </div>
             </div>
@@ -107,10 +107,10 @@
                             <td>{{$ad->ad_price}}</td>
 
                             <td class="d-flex justify-content-center">
-                                <a href="/ad/{{$ad->id}}/edit">
+                                <a href="/advertisement/{{$ad->id}}/edit">
                                     <i class="fa-solid fa-pen-to-square px-2"></i>
                                 </a>
-                                <a href="/ad/{{$ad->id}}/delete">
+                                <a href="/advertisement/{{$ad->id}}/delete">
                                     <i class="fa-solid fa-trash-can text-danger"></i>
                                 </a>
                             </td>

@@ -37,8 +37,11 @@
                             <a href="/advertisement/create">Add New</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="/advertisement-size">Ad Size</a>
+                            <a href="/advertisement">Report</a>
                         </li>
+                        <!-- <li class="submenu-item ">
+                            <a href="/advertisement-size">Ad Size</a>
+                        </li> -->
                     </ul>
                 </li>
 
@@ -64,8 +67,28 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="fa fa-link"></i>
+                        <span>Useful Links</span>
+                    </a>
+                    <ul class="submenu ">
+                        <li class="submenu-item ">
+                            <a href="/files/advertisement_rate.pdf" target="_blank">Newspaper Circulation and Advertisement Rate</a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="/files/Advertisement_Guideline.pdf" target="_blank">Advertisement Rules and Regulations</a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="/files/advertisement_and_supplement_policies.pdf" target="_blank">Advertisement and Supplement Policies </a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="/files/Printing_Publication_(Deceleration)_Act.pdf" target="_blank">Printing & Publication Act</a>
+                        </li>
+                    </ul>
+                </li>
 
-                <li class="sidebar-item  {{ (request()->is('user')) ? 'active' : '' }}">
+                <!-- <li class="sidebar-item  {{ (request()->is('user')) ? 'active' : '' }}">
                     <a href="/user" class='sidebar-link'>
                         <i class="fa-solid fa-user-group"></i>
                         <span>Users</span>
@@ -85,7 +108,8 @@
                             <a href="/logout">Logout</a>
                         </li>
                     </ul>
-                </li>
+                </li> 
+            -->
 
             </ul>
         </div>

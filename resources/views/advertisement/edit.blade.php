@@ -1,16 +1,16 @@
 <x-app-layout>
-<div class="page-heading">
+    <div class="page-heading">
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Edit institution</h3>
-                    <p class="text-subtitle text-muted">Edit institution Form</p>
+                    <h3>Edit Advertisement</h3>
+                    <p class="text-subtitle text-muted">Edit Advertisement Form</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Edit institution</li>
+                            <li class="breadcrumb-item active" aria-current="page"> Edit Advertisement</li>
                         </ol>
                     </nav>
                 </div>
@@ -23,75 +23,99 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Edit institution Form</h4>
+                            <h4 class="card-title">Edit Advertisement </h4>
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form action="{{ route('institution.update', $institution->id) }}" method="POST" class="form">
+                                <form action="{{ route('advertisement.update', $Advertisement->id) }}" method="POST" class="form" enctype="multipart/form-data">
                                     @csrf @method('PUT')
                                     <div class="row">
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="first-name-column">Ministry</label>
-                                                <input type="text" id="first-name-column" class="form-control"
-                                                    placeholder="" value="{{$institution->ministry}}" name="ministry">
+                                        <div class="col-md-12 col-12">
+                                            <div class="form-group mb-3">
+                                                <label class="noto-sans" for="formFile" class="form-label">বিজ্ঞাপন নির্বাচন</label>
+                                                <input class="form-control" type="file" name="ad_file" id="formFile">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="email-id-column">Department Or Directorate</label>
-                                                <input type="text" id="email-id-column" class="form-control"
-                                                    value="{{$institution->departmentOrDirectorate}}" name="departmentOrDirectorate" placeholder="">
+                                                <label class="noto-sans" for="first-name-column">বিজ্ঞাপনের নাম</label>
+                                                <input type="text" id="first-name-column" class="form-control" placeholder="" value="{{ $Advertisement->ad_name }}" name="ad_name">
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="noto-sans" for="email-id-column">Advertisement Data</label>
+                                                <input type="text" id="email-id-column" class="form-control" name="advertisementData" placeholder="">
+                                            </div>
+                                        </div> -->
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="noto-sans" for="institution">প্রতিষ্ঠান</label>
+                                                <select class="choices form-select" name="institution_id" id="institution">
+                                                    <option value="">Select Institution</option>
+                                                    @foreach($institutions as $institution)
+                                                    <option value="{{$institution->id}}">{{$institution->ministry}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="noto-sans" for="advertisement_size">বিজ্ঞাপনের সাইজ</label>
+                                                <select class="choices form-select" name="ad_size_id" id="advertisement_size">
+                                                    <option value="">Select Ad Size</option>
+                                                    @foreach($adsizes as $adsize)
+                                                    <option value="{{$adsize->id}}">{{$adsize->column.'x'.$adsize->inch.' Column - Inch'}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="noto-sans" for="city-column">বিজ্ঞাপনের ধরণ</label>
+                                                <select class="choices form-select" name="ad_type" id="adrevetisement_size">
+                                                    <option value="">Select Ad Type</option>
+                                                    <option value="eGP">eGP</option>
+                                                    <option value="tender">Tender</option>
+                                                    <option value="legalNotice">Notice</option>
+                                                    <option value="notice">Legal Notice</option>
+                                                    <option value="appointmentNotice">Appointment Notice</option>
+                                                    <option value="auctionNotice">Auction Notice</option>
+                                                    <option value="leaseNotice">Lease Notice</option>
+                                                    <option value="supplement">Supplement</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="city-column">Office</label>
-                                                <input type="text" id="city-column" class="form-control"
-                                                    placeholder="" value="{{$institution->office}}" name="office">
+                                                <label class="noto-sans" for="city-column">প্রত্রিকার সংখ্যা</label>
+                                                <select class="choices form-select" name="newspaper_number" id="adrevetisement_size">
+                                                    <option value="2" selected>2</option>
+                                                    <option value="4">4</option>
+                                                    <option value="6">6</option>
+                                                    <option value="8">8</option>
+                                                    <option value="10">10</option>
+                                                    <option value="1000">Unlimited</option>
+                                                </select>
                                             </div>
                                         </div>
+
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="country-floating">Administrative Department</label>
-                                                <input type="text" id="country-floating" class="form-control"
-                                                    value="{{$institution->administrativeDepartment}}" name="administrativeDepartment" placeholder="">
+                                                <label class="noto-sans" for="newspaper_id">পত্রিকা নির্বাচন</label>
+                                                <select class="choices form-select multiple-remove" multiple="multiple" name="newspapers[]" id="newspaper_id">
+                                                    @foreach($newspapers as $newspaper)
+                                                    <option value="{{$newspaper->id}}">{{$newspaper->newspaperName}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="company-column">District</label>
-                                                <input type="text" id="District-column" class="form-control"
-                                                    value="{{$institution->district}}" name="district" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="email-id-column">District Level Office</label>
-                                                <input type="text" id="districtLevelOffice-id-column" class="form-control"
-                                                    value="{{$institution->districtLevelOffice}}" name="districtLevelOffice" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="company-column">Upazila</label>
-                                                <input type="text" id="Upazila-column" class="form-control"
-                                                    value="{{$institution->upazila}}" name="upazila" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="email-id-column">Upazilla Level Office</label>
-                                                <input type="text" id="UpazilaLevelOffice-id-column" class="form-control"
-                                                    value="{{$institution->upazilaLevelOffice}}" name="upazilaLevelOffice" placeholder="">
-                                            </div>
-                                        </div>
-                                        
+
                                         <div class="col-12 d-flex justify-content-end">
-                                            <button type="submit"
-                                                class="btn btn-primary me-1 mb-1">Update</button>
-                                            <button type="reset"
-                                                class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                            <button type="submit" class="btn btn-primary me-1 mb-1">Update</button>
+                                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                         </div>
                                     </div>
                                 </form>
@@ -103,4 +127,31 @@
         </section>
         <!-- // Basic multiple Column Form section end -->
     </div>
+
+    @section('extra-js')
+    <script>
+        window.onload = function() {
+            districts();
+        }
+
+        const districts = async () => {
+            const {
+                data
+            } = await axios.get('https://bdapis.herokuapp.com/api/v1.1/districts');
+            // .then(res => console.log(res.data))
+            // .catch(err => console.log(err));   
+            const dist = data.data;
+            // console.log(dist)
+            var options = "";
+            for (const key of Object.keys(dist)) {
+                options += '<option value=' + dist[key]._id + '>' + dist[key].district + '</option>';
+            }
+            document.getElementById("district").innerHTML = options;
+        }
+    </script>
+
+    <!-- Include Choices JavaScript -->
+    <script src="/assets/vendors/choices.js/choices.min.js"></script>
+
+    @endsection
 </x-app-layout>
