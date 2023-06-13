@@ -28,7 +28,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         return view('dashboard');
     })->name('dashboard');
     Route::resource('user', UserController::class);
+    Route::get('institution/{id}/delete', [InstitutionController::class, 'delete']);
     Route::resource('institution', InstitutionController::class);
+
+    Route::get('advertisement/{id}/delete', [AdvertisementController::class, 'delete']);
     Route::resource('advertisement', AdvertisementController::class);
     Route::resource('advertisement-size', AdvertisementSizeController::class);
     Route::resource('newspaper', NewspaperController::class);
