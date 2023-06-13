@@ -37,10 +37,10 @@
     <!-- Styles -->
     <!-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> -->
 
-    <!-- @livewireStyles -->
+    @livewireStyles
 
     <!-- Scripts -->
-    <!-- <script src="{{ mix('js/app.js') }}" defer></script> -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
     @toastr_css
 </head>
 
@@ -57,7 +57,7 @@
                 </a>
             </header>
 
-            <!-- @yield('content') -->
+
             {{ $slot }}
 
             <footer>
@@ -73,9 +73,9 @@
         </div>
     </div>
 
-    <!-- @stack('modals')
+    @stack('modals')
 
-        @livewireScripts -->
+    @livewireScripts
 
     @yield('extra-js')
 
